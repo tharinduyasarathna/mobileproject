@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-toolbar >
+  <ion-buttons slot="start">
+    <ion-back-button></ion-back-button>
+  </ion-buttons>
+    <ion-title>App Settings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item color="dark">
+    <ion-avatar slot="start">
+      <img src="assets/icon/favicon.png" class="user-avatar">
+    </ion-avatar>
+    <ion-label>
+      <ion-text color="light">
+        <h2>
+          <strong> Tharindu</strong>
+        </h2>
+      </ion-text>
+      
+      <ion-button icon-left size="small" shape="round" color="medium" (click)="editProfile()">
+        <ion-icon name="contact"></ion-icon>
+        <ion-text class="editprofile1" >
+          <strong> Edit profile</strong>
+        </ion-text>
+        
+      </ion-button>
+    </ion-label>
+  </ion-item>
+
+  <ion-list no-border>
+    <ion-list-header>
+      <ion-text color="light">
+        <h5>General</h5>
+      </ion-text>
+    </ion-list-header>
+    <ion-item>
+      <ion-icon name="settings" slot="start" color="light"></ion-icon>
+      <ion-label color="light">App Language</ion-label>
+      <ion-select [(ngModel)]="lang">
+        <ion-select-option *ngFor="let language of languages" [value]="language">{{language}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="notifications" slot="start" color="light"></ion-icon>
+      <ion-label class="label" color="light"> Enable notifications </ion-label>
+      <ion-toggle [(ngModel)]="enableNotifications"></ion-toggle>
+    </ion-item>
+  </ion-list>
+  
+  <ion-list>
+    <ion-list-header>
+      <ion-text color="light">
+        <h5>Other</h5>
+      </ion-text>
+    </ion-list-header>
+   
+    <ion-item>
+      <ion-icon name="mail" slot="start" color="light"></ion-icon>
+      <ion-label class="label" color="light">Enable History</ion-label>
+      <ion-toggle [(ngModel)]="enableHistory"></ion-toggle>
+    </ion-item>
+
+  <ion-button class="logoutbtn1" icon-left size="small"  shape="round" color="medium" (click)="logout()">
+        <ion-icon name="log-out" ></ion-icon>
+        <ion-text class="editprofile1">
+          <strong> logout</strong>
+        </ion-text>
+        
+      </ion-button>
+  </ion-list>
+</ion-content>

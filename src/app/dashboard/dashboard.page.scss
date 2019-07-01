@@ -1,0 +1,14 @@
+ion-content{
+  --background: #fff url('../../assets//images/matt-zhang-3R-4Hu_KHNM-unsplash.jpg') no-repeat center center / cover;
+}
+
+ion-card-header.dashboard-header{
+  background-color: var(--ion-color-dark);
+  color: #fff;
+}
+
+ion-card.dashbord-card{
+  background-color: rgba(50, 115, 220, 0.3);
+  padding: 3%;
+}
+

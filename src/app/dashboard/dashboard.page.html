@@ -1,0 +1,94 @@
+<ion-header>
+  <ion-toolbar >
+      
+    <ion-buttons slot="start">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+        
+        <ion-title>
+            <ion-text>
+              <ion-text text-center color="dark" class="fw700">Weather App</ion-text>
+            </ion-text>
+        </ion-title>
+        <ion-buttons slot="end">
+          <ion-button size="small" shape="round" color="dark" (click)="notifications()">
+            <ion-icon name="notifications"></ion-icon>
+            <ion-badge color="danger" slot="end">2</ion-badge>
+          </ion-button>
+        </ion-buttons>
+    
+  </ion-toolbar>
+ 
+</ion-header>
+
+    <ion-card-header class="dashboard-header">
+        <form
+  [formGroup]="weatherSearchForm" (ngSubmit)="sendToWether(weatherSearchForm.formValues)">
+  <div class="form-group">
+    <input
+      class="form-control"
+      type="text"
+      id="weatherLocation"
+      aria-describedby="weatherLocation"
+      placeholder="Please input a Location"
+    formControlName="location" />
+  </div>
+  <div class="text-center">
+      <button type="submit" class="btn btn-success btn-md">
+        Search for the weather
+      </button>
+    </div>
+</form>
+            
+    </ion-card-header>
+
+
+
+ 
+<ion-content >
+    
+      <ion-card class="dashbord-card">
+        
+            <div class="list card">
+
+                <div class="item item-body">
+                 
+          
+                  <br>
+          
+                  <p>
+                    This is a "Facebook" styled Card. The header is created from a Thumbnail List item, the content is from a card-body consisting of an image and paragraph text. The footer consists of tabs, icons aligned left, within the card-footer.
+                  </p>
+                  
+                </div>    
+            </div>
+          
+      </ion-card>
+      
+    
+     
+      
+      
+  <ion-grid>
+    <ion-row>
+      <ion-col text-center>
+        Welcome to Dashboard!
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col text-center>
+        Your Registered EmailID : {{userEmail}}
+      </ion-col>
+    </ion-row>
+  </ion-grid>  
+  
+ 
+  
+</ion-content>
+
+<!-- <ion-footer (click)="logout()">
+  <ion-toolbar color="secondary">
+    <ion-title>Log out</ion-title>
+  </ion-toolbar>
+</ion-footer> -->
+
