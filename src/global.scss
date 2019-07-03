@@ -256,3 +256,73 @@ ion-button.logoutbtn1{
       margin-bottom: -2px;
     }
   }
+
+
+  .weather {
+    padding-bottom: 40px;
+}
+
+.weather > div {
+    text-align: center;
+    
+}
+
+.weather img {
+    width: 120px;
+}
+
+.weather div p {
+    padding: 0px;
+    margin: 0px;
+}
+.checkWeather {
+    padding: 10px;
+    display: block;
+    color: #222;
+    text-decoration: none;
+    background: #a8ff78;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #78ffd6, #a8ff78);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #78ffd6, #a8ff78); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+    width: 40%;
+    margin: 0 auto;
+    border-radius: 20px;
+}
+
+.hcountry{
+  text-align: center;
+}
+
+.big {
+  font-size: 4rem;
+  padding: 0px;
+  margin: 0px;
+}
+
+button:disabled {
+  background: rgb(214, 214, 214);
+  cursor: not-allowed;
+}
+
+@media screen and (max-width: 900px) {
+     
+  .main h1 {
+      font-size: 3rem;
+      line-height: 3rem;
+      width: 60%;
+      margin: 60px auto;
+      text-align: center;
+      color: #fff;
+  }
+
+
+  .main > div.intro, .main > div.details {
+      width: 90%;
+  }
+}
+
+.inputcountry{
+  text-align: center;
+  color: #222;
+ 
+}

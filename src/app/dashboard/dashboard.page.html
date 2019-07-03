@@ -21,31 +21,40 @@
  
 </ion-header>
 
-    <ion-card-header class="dashboard-header">
-        <form
-  [formGroup]="weatherSearchForm" (ngSubmit)="sendToWether(weatherSearchForm.formValues)">
-  <div class="form-group">
-    <input
-      class="form-control"
-      type="text"
-      id="weatherLocation"
-      aria-describedby="weatherLocation"
-      placeholder="Please input a Location"
-    formControlName="location" />
-  </div>
-  <div class="text-center">
-      <button type="submit" class="btn btn-success btn-md">
-        Search for the weather
-      </button>
+  
+    
+    <ion-content class="main">
+      <div class="details" >
+        <div class="hcountry">
+            <br>
+      <h2><strong>{{weather.location.name | uppercase }}  </strong></h2>
+      
+      
     </div>
-</form>
-            
-    </ion-card-header>
-
-
-
+    
+      <form [formGroup] ="weatherForm" (ngSubmit)="search(weatherForm.value)">
+        <ion-input placeholder="Enter City Name, Ex. Paris" formControlName="city" class="inputcountry"></ion-input>
+    
+        <button class="checkWeather" type="submit" [disabled]="!weatherForm.valid">Submit</button><br>
+      </form>
+      <div class="weather" *ngIf="weather">
+          <div>   
+              <img [src]="weather.current.condition.icon" />
+              <p class="big">{{weather.current.temp_c}}°</p>
+              <p><strong>{{weather.current.condition.text}}</strong></p> 
+          </div>
+          <div>
+              
+              <p>{{weather.location.name}}, <span>{{weather.location.country}}</span> </p>
+              <p>{{weather.location.localtime}}</p>
+          </div>  
+      </div>
+    </div>
+    
+    </ion-content>
+   
  
-<ion-content >
+<!-- <ion-content >
     
       <ion-card class="dashbord-card">
         
@@ -84,11 +93,6 @@
   
  
   
-</ion-content>
+</ion-content> -->
 
-<!-- <ion-footer (click)="logout()">
-  <ion-toolbar color="secondary">
-    <ion-title>Log out</ion-title>
-  </ion-toolbar>
-</ion-footer> -->
 

@@ -27,6 +27,7 @@ firebase.initializeApp(environment.firebase);
   imports: [
     BrowserModule, 
     IonicModule.forRoot(), 
+    
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
