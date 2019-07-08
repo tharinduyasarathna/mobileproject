@@ -1,67 +1,67 @@
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-import { ApiService } from '../services/api.service';
-import { Component, OnInit } from '@angular/core';
-import { NavController, PopoverController, MenuController } from '@ionic/angular';
-import { AuthenticateService } from '../services/authentication.service';
-import { NotificationsComponent } from '../components/notifications/notifications.component';
-import { Subscription } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import {
+  FormBuilder,
+  FormGroup,
+  FormControl,
+  Validators
+} from "@angular/forms";
+import { ApiService } from "../services/api.service";
+import { Component, OnInit } from "@angular/core";
+import {
+  NavController,
+  PopoverController,
+  MenuController
+} from "@ionic/angular";
+import { AuthenticateService } from "../services/authentication.service";
+import { NotificationsComponent } from "../components/notifications/notifications.component";
+import { Subscription } from "rxjs";
+import { ActivatedRoute } from "@angular/router";
 import { Storage } from "@ionic/storage";
- 
+
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.page.html',
-  styleUrls: ['./dashboard.page.scss'],
+  selector: "app-dashboard",
+  templateUrl: "./dashboard.page.html",
+  styleUrls: ["./dashboard.page.scss"]
 })
 export class DashboardPage implements OnInit {
- 
   public weatherSearchForm: FormGroup;
- 
+
   userEmail: string;
   enableNotifications: any;
 
- 
- 
   constructor(
-    
     private authService: AuthenticateService,
     public navCtrl: NavController,
     public menuCtrl: MenuController,
     public popoverCtrl: PopoverController,
-    private apiService:ApiService,
+    private apiService: ApiService,
     private formBuilder: FormBuilder,
     public activeRouter: ActivatedRoute,
     private ionicStorage: Storage
-    
-   
-    
   ) {}
 
   ionViewWillEnter() {
     this.menuCtrl.enable(true);
   }
- 
-  ngOnInit(){
-    
-    if(this.authService.userDetails()){
+
+  ngOnInit() {
+    if (this.authService.userDetails()) {
       this.userEmail = this.authService.userDetails().email;
       this.getWeather();
-    }else{
-      this.navCtrl.navigateBack('');
+    } else {
+      this.navCtrl.navigateBack("");
     }
-
-   
   }
- 
-  logout(){
-    this.authService.logoutUser()
-    .then(res => {
-      console.log(res);
-      this.navCtrl.navigateBack('');
-    })
-    .catch(error => {
-      console.log(error);
-    })
+
+  logout() {
+    this.authService
+      .logoutUser()
+      .then(res => {
+        console.log(res);
+        this.navCtrl.navigateBack("");
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
   async notifications(ev: any) {
@@ -74,46 +74,40 @@ export class DashboardPage implements OnInit {
     return await popover.present();
   }
 
-
   public weatherForm = new FormGroup({
-    city: new FormControl('', Validators.required),
+    city: new FormControl("", Validators.required)
   });
   public weather;
   public city;
 
-  search(formData: FormData){
+  search(formData: FormData) {
     console.log(formData);
     this.ionicStorage.set("city", formData["city"]);
-    
-    this.apiService.getWeatherFromApi(formData["city"]).subscribe( weather => {
+
+    this.apiService.getWeatherFromApi(formData["city"]).subscribe(weather => {
       this.weather = weather;
       console.log(weather);
-    })
-
+    });
   }
 
-
-  getWeather(){
-      this.ionicStorage.get("city").then( city => {
-        if(city === null){
-          this.apiService.getWeatherFromApi("paris").subscribe( weather => {
+  getWeather() {
+    this.ionicStorage
+      .get("city")
+      .then(city => {
+        if (city === null) {
+          this.apiService.getWeatherFromApi("paris").subscribe(weather => {
             this.weather = weather;
             console.log(weather);
-          })
-        }else{
-          this.apiService.getWeatherFromApi(city).subscribe( weather => {
+          });
+        } else {
+          this.apiService.getWeatherFromApi(city).subscribe(weather => {
             this.weather = weather;
             console.log(weather);
           });
         }
-
-      }).catch(err =>{
-        console.log(err);
       })
-   
+      .catch(err => {
+        console.log(err);
+      });
   }
-
-  
-  
-
 }
