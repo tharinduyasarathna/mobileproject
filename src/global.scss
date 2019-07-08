@@ -39,7 +39,8 @@ ion-toolbar.user-profile {
 
 //change all content bg color
 ion-content{
-    --ion-background-color:#34495e;
+  --ion-item-background: transparent;
+
 }
 
 //logout buttons
@@ -53,6 +54,14 @@ ion-button.logoutbtn1{
   float: right;
   margin-top: 20%;
   margin-right: 5%;
+}
+
+ion-content.side-menu-content{
+  --background: #fff url('../src/assets/images/resul-DbwYNr8RPbg-unsplash.jpg') no-repeat center center / cover;
+}
+
+ion-menu-toggle.navbackground{
+  --background: #fff url('../src/assets/images/resul-DbwYNr8RPbg-unsplash.jpg') no-repeat center center / cover;
 }
 
 //edit profile buttons
@@ -295,6 +304,12 @@ ion-button.logoutbtn1{
 
 .big {
   font-size: 4rem;
+  padding: 0px;
+  margin: 0px;
+}
+
+.big2 {
+  font-size: 2rem;
   padding: 0px;
   margin: 0px;
 }
