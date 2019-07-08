@@ -18,6 +18,7 @@ import * as firebase from 'firebase';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NotificationsComponent } from './components/notifications/notifications.component';
+import { NotificationService } from './services/notification/notification.service';
  
 firebase.initializeApp(environment.firebase);
  
@@ -40,6 +41,7 @@ firebase.initializeApp(environment.firebase);
     SplashScreen,
     AuthenticateService,
     ApiService,
+    NotificationService
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
