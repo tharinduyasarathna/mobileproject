@@ -16,6 +16,7 @@ import { NotificationsComponent } from "../components/notifications/notification
 import { Subscription } from "rxjs";
 import { ActivatedRoute } from "@angular/router";
 import { Storage } from "@ionic/storage";
+import { NotificationService } from "../services/notification/notification.service";
 
 @Component({
   selector: "app-dashboard",
@@ -36,7 +37,8 @@ export class DashboardPage implements OnInit {
     private apiService: ApiService,
     private formBuilder: FormBuilder,
     public activeRouter: ActivatedRoute,
-    private ionicStorage: Storage
+    private ionicStorage: Storage,
+    private notificationService: NotificationService
   ) {}
 
   ionViewWillEnter() {
@@ -44,6 +46,7 @@ export class DashboardPage implements OnInit {
   }
 
   ngOnInit() {
+    this.notificationService.scheduleANotification();
     if (this.authService.userDetails()) {
       this.userEmail = this.authService.userDetails().email;
       this.getWeather();
