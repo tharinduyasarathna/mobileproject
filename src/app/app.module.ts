@@ -18,6 +18,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { NotificationsComponent } from "./components/notifications/notifications.component";
 import { NotificationService } from "./services/notification/notification.service";
+import { LocalNotifications } from "@ionic-native/local-notifications/ngx";
 
 firebase.initializeApp(environment.firebase);
 
@@ -40,6 +41,7 @@ firebase.initializeApp(environment.firebase);
     AuthenticateService,
     ApiService,
     NotificationService,
+    LocalNotifications,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
