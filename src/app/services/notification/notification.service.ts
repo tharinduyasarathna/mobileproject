@@ -11,10 +11,10 @@ export class NotificationService {
    */
   scheduleANotification = () => {
     this.notifications.schedule({
-      id: 1,
-      text: "Single ILocalNotification",
-      sound: isAndroid ? "file://sound.mp3" : "file://beep.caf",
-      data: { secret: key }
+      text: "Delayed ILocalNotification",
+      trigger: { at: new Date(new Date().getTime() + 60) },
+      led: "FF0000",
+      sound: null
     });
   };
 }
